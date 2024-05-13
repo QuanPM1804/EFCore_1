@@ -1,7 +1,6 @@
 ﻿using EFCore_1.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Reflection.Emit;
+
 
 namespace EFCore_1.Data
 {
@@ -41,13 +40,14 @@ namespace EFCore_1.Data
                 .HasOne(pe => pe.Employee)
                 .WithMany(e => e.ProjectEmployees)
                 .HasForeignKey(pe => pe.EmployeeId);
+
             modelBuilder.Entity<Department>().HasData(
                 new Department { Id = Guid.NewGuid(), Name = "Software Development" },
                 new Department { Id = Guid.NewGuid(), Name = "Finance" },
                 new Department { Id = Guid.NewGuid(), Name = "Accountant" },
                 new Department { Id = Guid.NewGuid(), Name = "HR" }
             );
+
         }
     }
-
 }
